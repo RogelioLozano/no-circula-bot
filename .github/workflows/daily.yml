@@ -17,7 +17,7 @@ jobs:
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
-      PLACA_ULTIMO_DIGITO: ${{ secrets.PLACA_DIGITO }}
+      PLACA_ULTIMO_DIGITO: ${{ secrets.PLACA_ULTIMO_DIGITO }}
       HOLOGRAMA:           ${{ secrets.HOLOGRAMA }}
       NOTIFICAR_SOLO_SI_NO_CIRCULA: ${{ secrets.NOTIFICAR_SOLO_SI_NO_CIRCULA }}
       LOG_LEVEL:           INFO
