@@ -9,7 +9,7 @@ Flujo:
   3. Consulta contingencia ambiental (CAMe)
   4. Evalúa circulación según Hoy No Circula
   5. Construye mensaje formateado
-  6. Envía mensaje por WhatsApp vía Twilio
+  6. Envía mensaje por Telegram vía Bot API
 
 Uso directo:
   python main.py
@@ -27,7 +27,7 @@ from dotenv import load_dotenv
 
 from contingencia_service import fase_a_nivel, verificar_contingencia
 from reglas_service import evaluar_circulacion
-from whatsapp_service import enviar_mensaje
+from telegram_service import enviar_mensaje
 
 
 def configurar_logging(nivel: str) -> None:
@@ -56,10 +56,8 @@ def cargar_configuracion() -> dict:
     errores: list[str] = []
 
     variables_requeridas = [
-        "TWILIO_SID",
-        "TWILIO_TOKEN",
-        "TWILIO_FROM",
-        "TWILIO_TO",
+        "TELEGRAM_BOT_TOKEN",
+        "TELEGRAM_CHAT_ID",
         "PLACA_ULTIMO_DIGITO",
         "HOLOGRAMA",
     ]
@@ -206,10 +204,10 @@ def main() -> None:
     )
     logger.debug("Mensaje a enviar:\n%s", mensaje)
 
-    # ── 6. Enviar por WhatsApp ───────────────────────────────────────────────
-    logger.info("Enviando notificación por WhatsApp...")
-    sid = enviar_mensaje(mensaje)
-    logger.info("✅ Notificación enviada. SID: %s", sid)
+    # ── 6. Enviar por Telegram ───────────────────────────────────────────────
+    logger.info("Enviando notificación por Telegram...")
+    enviar_mensaje(mensaje)
+    logger.info("✅ Notificación enviada.")
     logger.info("=== no-circula-bot finalizado ===")
 
 

@@ -208,11 +208,13 @@ def verificar_contingencia() -> dict:
 
         texto = _extraer_texto_limpio(html)
 
+        # Fallback: si BS4 devuelve vacío (sitio JS-rendered), buscar en el
+        # HTML crudo — el contenido suele estar embebido en JSON/script inline.
         if not texto:
-            msg = f"La página se descargó pero no contiene texto parseable: {url}"
-            logger.warning(msg)
-            errores.append(msg)
-            continue
+            logger.warning(
+                "Texto vacío tras parseo BS4, buscando en HTML crudo: %s", url
+            )
+            texto = html
 
         fase, detalle = _detectar_fase(texto)
         hay_contingencia = fase is not None

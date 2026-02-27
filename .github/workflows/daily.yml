@@ -15,10 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TWILIO_SID:          ${{ secrets.TWILIO_SID }}
-      TWILIO_TOKEN:        ${{ secrets.TWILIO_TOKEN }}
-      TWILIO_FROM:         ${{ secrets.TWILIO_FROM }}
-      TWILIO_TO:           ${{ secrets.TWILIO_TO }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
       PLACA_ULTIMO_DIGITO: ${{ secrets.PLACA_DIGITO }}
       HOLOGRAMA:           ${{ secrets.HOLOGRAMA }}
       LOG_LEVEL:           INFO
