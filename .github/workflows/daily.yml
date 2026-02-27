@@ -4,7 +4,7 @@ on:
   # 6:00 AM hora CDMX (UTC-6, sin horario de verano desde 2023)
   # 6:00 CDMX = 12:00 UTC
   schedule:
-    - cron: "36 5 * * *"
+    - cron: "0 13 * * *"
 
   # Permite ejecución manual desde la pestaña Actions
   workflow_dispatch:
